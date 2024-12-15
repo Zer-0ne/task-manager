@@ -10,7 +10,7 @@ export const connect = async (): Promise<void> => {
             // useUnifiedTopology: true,
             // useNewUrlParser: true,
             // useUnifiedTopology: true,s
-            serverSelectionTimeoutMS: 150000,
+            // serverSelectionTimeoutMS: 150000,
         });
 
         console.log('Connected to MongoDB');

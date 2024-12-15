@@ -25,7 +25,7 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState('');
     return (
         <div
-            className='flex-1 overflow-auto w-full'
+            className='flex-1 w-full'
         >
             <Header />
 
