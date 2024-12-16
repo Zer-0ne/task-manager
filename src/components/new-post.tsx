@@ -20,6 +20,7 @@ import { Task } from "@/utils/interfaces";
 
 export function PostModal({ data, btnText }: { data?: Task, btnText?: string }) {
     const dispatch = useDispatch<AppDispatch>();
+    const [isDisabled, setIsDisabled] = useState(false)
     const [formData, setFormData] = useState({
         title: data?.title || "",
         description: data?.description || "",
@@ -45,6 +46,7 @@ export function PostModal({ data, btnText }: { data?: Task, btnText?: string }) 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { title, description } = formData;
+        setIsDisabled(true)
 
         // Validate inputs
         if (!title) {
@@ -70,6 +72,8 @@ export function PostModal({ data, btnText }: { data?: Task, btnText?: string }) 
 
             // Close the dialog
             setIsOpen(false);
+
+            setIsDisabled(false)
         }
     };
 
@@ -126,7 +130,7 @@ export function PostModal({ data, btnText }: { data?: Task, btnText?: string }) 
                     </div>
                     {formData.error && <p className="text-red-500 text-sm">{formData.error}</p>}
                     <DialogFooter>
-                        <Button type="submit">Post</Button>
+                        <Button disabled={isDisabled} type="submit">{isDisabled ? 'Posting...' : 'Post'}</Button>
                     </DialogFooter>
                 </form>
             </DialogContent>

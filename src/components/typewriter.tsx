@@ -41,9 +41,9 @@ const Typewriter: React.FC<TypewriterProps> = ({ texts, speed = 100, ref, style 
     }, [displayedText, isDeleting, speed, textIndex, texts]);
 
     return (
-        <span ref={ref} style={style}>
+        <span className='transition duration-500 ease-in-out' ref={ref} style={style}>
             {displayedText}
-            <span className={`cursor ${isDeleting ? 'deleting' : ''}`}>|</span>
+            <span className={`transition duration-500 ease-in-out cursor ${isDeleting ? 'deleting' : ''}`}>|</span>
         </span>
     );
 };
