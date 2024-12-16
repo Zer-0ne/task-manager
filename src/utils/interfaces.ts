@@ -3,6 +3,7 @@ export interface Task {
     description: string;
     _id?: string;
     author?: string | User
+    createdAt: string
 }
 
 export interface User {

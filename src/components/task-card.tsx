@@ -23,6 +23,9 @@ export function Cards({
     data?: Task
 }) {
     const dispatch = useDispatch<AppDispatch>();
+    const date = new Date(data?.createdAt as string);
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    const formattedDate = date.toLocaleDateString('en-GB', options as any);
     function TaskCard() {
         return (
             <Card className="max-w-[100%] transition ease-in-out duration-500 dark:hover:border-[#ffffff74] hover:border-[#00000074] flex flex-col cursor-pointer">
@@ -48,6 +51,7 @@ export function Cards({
                                 <span className="text-gray-500 p-1 bg-white rounded-full w-[20px] h-[20px] text-xs">{(data?.author as User)?.name?.match(/\b\w/g)?.join("").toUpperCase()}</span> // Placeholder text
                             )
                         }
+                        <p className="text-[.8rem] opacity-75 font-medium" >{formattedDate}</p>
                     </div>
                     <CardDescription>
                         <p
